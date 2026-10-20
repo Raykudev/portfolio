@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://valentin-wyss.infinityfree.io/sitemap.xml
