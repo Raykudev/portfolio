@@ -6,17 +6,18 @@ Portfolio personnel réalisé en React dans le cadre de ma formation de dévelop
 
 ## Contenu
 
-- Présentation et formation
-- Compétences
+- Accueil : présentation et formation
+- À propos : informations personnelles
 - Projets : [Canopées](https://github.com/Raykudev/canopees) et [Guide Kyoto](https://github.com/Raykudev/Projet-Kyoto)
-- Contact
+- Contact : formulaire relié à [Web3Forms](https://web3forms.com) (les messages arrivent par email)
 
 ## Stack
 
 - React + Vite
 - CSS classique
+- Web3Forms pour l'envoi du formulaire
 
-Toutes les informations affichées (profil, compétences, projets) sont regroupées dans `src/data.js`.
+Toutes les informations affichées (profil, infos, projets) sont regroupées dans `src/data.js`.
 
 ## Lancer le projet
 
