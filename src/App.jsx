@@ -1,11 +1,17 @@
-import { profil, competences, projets } from './data'
+import { profil, projets, infos } from "./data";
+import Formulaire from "./Formulaire";
+import { Ordinateur, MotifCode, IconeGithub } from "./Illustrations";
+
+const annee = new Date().getFullYear();
 
 function App() {
   return (
     <>
       <header className="nav">
-        <span className="logo">{profil.nom}</span>
-        <nav>
+        <a href="/" className="logo">
+          {profil.nom}
+        </a>
+        <nav className="navlink">
           <a href="#apropos">À propos</a>
           <a href="#projets">Projets</a>
           <a href="#contact">Contact</a>
@@ -14,20 +20,59 @@ function App() {
 
       <main>
         <section className="hero">
-          <h1>Bonjour, je m'appelle {profil.nom}</h1>
-          <p className="sous-titre">{profil.titre}</p>
-          <p className="context">{profil.contexte}</p>
-          <a className="bouton" href="#contact">Me contacter</a>
+          <div className="hero-texte">
+            <MotifCode />
+            <p className="hero-intro">Bonjour, je m'appelle</p>
+            <h1>{profil.nom}</h1>
+            <p className="sous-titre">
+              <span className="losange" aria-hidden="true">
+                ◆
+              </span>{" "}
+              {profil.titre}
+            </p>
+            <p className="context">{profil.contexte}</p>
+            <div className="hero-actions">
+              <a className="bouton" href="#contact">
+                Me contacter
+              </a>
+              <a
+                className="icone"
+                href={profil.github}
+                target="_blank"
+                rel="noreferrer"
+                aria-label="GitHub"
+              >
+                <IconeGithub />
+              </a>
+            </div>
+          </div>
+
+          <Ordinateur />
+
+          <a
+            className="defiler"
+            href="#apropos"
+            aria-label="Descendre vers À propos"
+          >
+            <span />
+          </a>
         </section>
 
         <section id="apropos">
-          <h2>À propos</h2>
-          <p>{profil.description}</p>
-          <ul className="competences">
-            {competences.map((c) => (
-              <li key={c}>{c}</li>
+          <h2>Hello,</h2>
+          <p>
+            Je suis{" "}
+            <strong className="moi">{profil.nom}</strong>
+            , {profil.description}
+          </p>
+          <dl className="infos">
+            {infos.map((info) => (
+              <div key={info.label}>
+                <dt>{info.label} :</dt>
+                <dd>{info.valeur}</dd>
+              </div>
             ))}
-          </ul>
+          </dl>
         </section>
 
         <section id="projets">
@@ -43,7 +88,9 @@ function App() {
                   ))}
                 </div>
                 {p.lien && (
-                  <a href={p.lien} target="_blank" rel="noreferrer">Voir le projet →</a>
+                  <a href={p.lien} target="_blank" rel="noreferrer">
+                    Voir le projet →
+                  </a>
                 )}
               </article>
             ))}
@@ -52,20 +99,22 @@ function App() {
 
         <section id="contact">
           <h2>Contact</h2>
-          <p>Une question ou une opportunité ? Écris-moi !</p>
+          <p>N'hésitez pas à me contacter, je suis à votre entière disposition pour plus d'informations</p>
+          <Formulaire />
           <div className="liens">
             <a href={`mailto:${profil.email}`}>Email</a>
-            <a href={profil.github} target="_blank" rel="noreferrer">GitHub</a>
-            {profil.linkedin && (
-              <a href={profil.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
-            )}
+            <a href={profil.github} target="_blank" rel="noreferrer">
+              GitHub
+            </a>
           </div>
         </section>
       </main>
 
-      <footer>© {new Date().getFullYear()} {profil.nom}</footer>
+      <footer>
+        © {annee} {profil.nom} - Tous droits réservés
+      </footer>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

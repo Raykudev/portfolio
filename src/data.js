@@ -4,12 +4,10 @@ export const profil = {
   titre: 'Développeur web en formation',
   contexte: 'Actuellement en formation de développeur web et web mobile à l\'école PC WORKS31 à Toulouse. J\'ai acquis mes compétences grâce à Xavier et Sandrine.',
   description:
-    "Passionné par le développement web",
+    "futur Développeur Web & Mobile, passionné par ce métier.",
   email: 'valentin.wyss@hotmail.fr',
   github: 'https://github.com/Raykudev',
 }
-
-export const competences = ['HTML', 'CSS', 'JavaScript', 'React', 'Git', 'Node.js', 'PHP', 'API', 'vite', 'SQL']
 
 // lien : facultatif, ajoute l'URL du site en ligne ou du dépôt public
 export const projets = [
@@ -29,4 +27,12 @@ export const projets = [
   },
 ]
 
+export const infos = [
+  { label: 'Nom', valeur: 'Valentin Wyss' },
+  { label: 'Job', valeur: 'Développeur Web & Mobile' },
+  { label: 'Âge', valeur: '33 ans' },
+  { label: 'Ville', valeur: 'Robiac, Gard' },
+]
 
+// Clé du formulaire de contact : à créer gratuitement sur https://web3forms.com
+export const web3formsCle = "0039a217-53c9-421f-a4e7-4e2784fdcb82";

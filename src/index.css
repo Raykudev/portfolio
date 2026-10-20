@@ -1,6 +1,6 @@
 :root {
-  --fond: #0f172a;
-  --carte: #1e293b;
+  --fond: #171717;
+  --carte: #262626;
   --texte: #e2e8f0;
   --gris: #94a3b8;
   --accent: #38bdf8;
@@ -20,49 +20,10 @@ html {
 }
 
 a {
-  color: var(--accent);
   text-decoration: none;
-}
-
-.nav {
-  position: sticky;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 1rem 1.5rem;
-  background: rgba(15, 23, 42, 0.9);
-  backdrop-filter: blur(6px);
-  border-bottom: 1px solid var(--carte);
-}
-
-.logo {
-  font-weight: 700;
-}
-
-.nav nav {
-  display: flex;
-  gap: 1.25rem;
-}
-
-.nav nav a {
-  color: var(--texte);
-}
-
-.nav nav a:hover {
-  color: var(--accent);
-}
-
-main {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-}
-
-section {
-  padding: 4rem 0;
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 1.1rem;
 }
 
 h2 {
@@ -70,22 +31,123 @@ h2 {
   margin-bottom: 1.25rem;
 }
 
+/* ---------- Navigation ---------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: rgba(23, 23, 23, 0.9);
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--carte);
+}
+
+.logo {
+  font-size: 1.5rem;
+  margin-left: 5rem;
+  color: chocolate;
+}
+
+.logo:hover {
+  color: gold;
+}
+
+nav {
+  display: flex;
+  gap: 2rem;
+  margin-right: 5rem;
+}
+
+.navlink a {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: chocolate;
+}
+
+.navlink a:hover {
+  color: gold;
+}
+
+/* ---------- Sections ---------- */
+/* Chaque section prend toute la largeur (pour son fond),
+   mais son contenu reste centré sur 960px maximum */
+section {
+  padding: 4rem max(1.5rem, calc((100% - 960px) / 2));
+  scroll-margin-top: 70px; /* le titre n'est pas caché sous la nav au clic */
+}
+
+/* ---------- Accueil ---------- */
 .hero {
-  min-height: 70vh;
+  position: relative;
+  min-height: calc(100vh - 80px);
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2rem;
+}
+
+.hero-texte {
+  position: relative;
+  isolation: isolate;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 1rem;
 }
 
+/* Balise </> discrète en arrière-plan du texte */
+.motif-code {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  width: 80%;
+  transform: translateY(-50%);
+  color: rgba(255, 255, 255, 0.04);
+  z-index: -1;
+  pointer-events: none;
+}
+
+.hero-intro {
+  font-size: 1.4rem;
+  color: var(--gris);
+}
+
 .hero h1 {
-  font-size: clamp(2rem, 6vw, 3.5rem);
-  line-height: 1.15;
+  font-size: clamp(2.5rem, 7vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
 }
 
 .sous-titre {
   font-size: 1.25rem;
-  color: var(--gris);
+  color: chocolate;
+}
+
+.losange {
+  margin-right: 0.4rem;
+}
+
+.context {
+  font-size: 1.6rem;
+  color: gold;
+  margin: 1rem 0;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.hero-actions .bouton {
+  margin-right: 0.75rem;
 }
 
 .bouton {
@@ -97,27 +159,112 @@ h2 {
   font-weight: 600;
 }
 
-.competences,
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-  padding: 0;
-  list-style: none;
-}
-
-.competences {
-  margin-top: 1.5rem;
-}
-
-.competences li,
-.tags span {
-  padding: 0.25rem 0.75rem;
-  border-radius: 999px;
+.icone {
+  display: grid;
+  place-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 6px;
   background: var(--carte);
-  font-size: 0.9rem;
+  color: var(--gris);
 }
 
+.icone:hover {
+  color: gold;
+}
+
+.ordinateur {
+  width: 100%;
+  max-width: 480px;
+  justify-self: end;
+}
+
+/* Indicateur de défilement en forme de souris */
+.defiler {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 26px;
+  height: 42px;
+  border: 2px solid var(--gris);
+  border-radius: 14px;
+}
+
+.defiler span {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  width: 4px;
+  height: 8px;
+  margin-left: -2px;
+  border-radius: 2px;
+  background: var(--gris);
+  animation: defiler 1.6s infinite;
+}
+
+@keyframes defiler {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(14px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .defiler span { animation: none; }
+}
+
+/* ---------- À propos ---------- */
+#apropos {
+  background-color: whitesmoke;
+  color: grey;
+}
+
+/* Contenu décalé vers la droite (annulé sur mobile, voir en bas) */
+#apropos h2,
+#apropos p,
+.infos {
+  margin-left: 25rem;
+}
+
+#apropos h2 {
+  font-size: 2rem;
+  color: rgb(54, 53, 53);
+}
+
+#apropos p {
+  font-size: 1.5rem;
+}
+
+.moi {
+  color: black;
+  font-style: italic;
+}
+
+.infos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem 0;
+  max-width: 500px;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #ddd;
+}
+
+.infos div {
+  display: flex;
+}
+
+.infos dt {
+  width: 4.5rem; /* assez large pour « VILLE : », aligne les valeurs */
+  text-transform: uppercase;
+  color: #171717;
+}
+
+.infos dd {
+  margin: 0;
+  color: grey;
+}
+
+/* ---------- Projets ---------- */
 .grille {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -143,9 +290,89 @@ h2 {
   flex: 1;
 }
 
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
 .tags span {
+  padding: 0.25rem 0.75rem;
+  border-radius: 999px;
   background: var(--fond);
   font-size: 0.8rem;
+}
+
+/* ---------- Contact ---------- */
+.formulaire {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 600px;
+  margin: 2rem 0;
+}
+
+.formulaire .ligne {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.formulaire label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.formulaire input {
+  padding: 0.75rem 0;
+  border: none;
+  border-bottom: 2px solid #3a3a3a; /* uniquement le trait du bas */
+  background: transparent;
+  color: var(--texte);
+  font: inherit;
+}
+
+.formulaire input:focus {
+  outline: none;
+  border-bottom-color: gold; /* le trait devient doré au clic */
+}
+
+.formulaire textarea {
+  resize: vertical;
+  padding: 0.5rem;
+  border: 1px solid whitesmoke;
+  outline: none;
+  background-color: var(--fond);
+  color: white;
+  font: inherit;
+  font-size: 18px;
+}
+
+.formulaire .bouton {
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  font-weight: 600;
+}
+
+.formulaire .bouton:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.cache {
+  display: none;
+}
+
+.msg-ok {
+  color: #22c55e;
+}
+
+.msg-erreur {
+  color: #ef4444;
 }
 
 .liens {
@@ -161,9 +388,53 @@ footer {
   border-top: 1px solid var(--carte);
 }
 
-.context {
-  font-size: 1.6rem;
-  color: gold;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+/* ---------- Responsive (en fin de fichier pour passer après le reste) ---------- */
+@media (max-width: 800px) {
+  .logo,
+  nav {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  nav {
+    gap: 1.25rem;
+  }
+
+  .navlink a {
+    white-space: nowrap;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    padding-bottom: 6rem;
+  }
+
+  .ordinateur {
+    justify-self: center;
+    max-width: 340px;
+  }
+
+  .context {
+    font-size: 1.25rem;
+  }
+
+  #apropos p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tablette et mobile : plus assez de place pour décaler « À propos » */
+@media (max-width: 1000px) {
+  #apropos h2,
+  #apropos p,
+  .infos {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .infos,
+  .formulaire .ligne {
+    grid-template-columns: 1fr;
+  }
 }
